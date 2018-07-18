@@ -17,6 +17,11 @@ document.onkeyup = function(event) {
   // Determines which key was pressed by the user
   var userGuess = event.key;
 
+  //Disables the same key from being clicked twice!!!!!
+  if(previousGuess.includes(userGuess)) {
+  return;
+}
+
   //Previous guess is uploaded 
   previousGuess.push(userGuess);
 
@@ -51,6 +56,8 @@ document.onkeyup = function(event) {
     userGuess === "x" ||
     userGuess === "y" ||
     userGuess === "z") {
+
+
     if (userGuess === computerGuess) {
       //If the user matches computer then they gain point
       wins++;
@@ -70,6 +77,8 @@ document.onkeyup = function(event) {
       guessLeft = 9;
       previousGuess = [];
     }
+
+
   }
 
 
