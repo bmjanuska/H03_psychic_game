@@ -14,13 +14,14 @@
     // This function is run whenever the user presses a key.
     document.onkeyup = function(event) {
 
-      // Determines which key was pressed.
+      // Determines which key was pressed by the user
       var userGuess = event.key;
+
+      //Previous guess is uploaded 
       previousGuess.push(userGuess);
 
       // Randomly chooses a choice from the options array. This is the Computer's guess.
       var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
-
 
       if (userGuess === "a"|| 
         userGuess === "b"|| 
@@ -46,8 +47,11 @@
         userGuess === "y"|| 
         userGuess === "z" ) {
           if (userGuess === computerGuess){
-          //If computer 
+          //If the user matches computer then they gain point
           wins++;
+          previousGuess = [];
+          guessLeft = 9;
+
         } 
         if (userGuess !== computerGuess){
           //Subtract a guess when you pick a letter that does not match the computers choice
