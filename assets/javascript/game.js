@@ -46,14 +46,20 @@
         userGuess === "y"|| 
         userGuess === "z" ) {
           if (userGuess === computerGuess){
+          //If computer 
           wins++;
         } 
         if (userGuess !== computerGuess){
+          //Subtract a guess when you pick a letter that does not match the computers choice
           guessLeft--;
         }
 
-        if (guessLeft = 0){
+        if (guessLeft === 0){
+        //Add a point to losses if you run out of points before guessing the right letter
         losses++;
+        //Guesses will return to 9 when you run out of guesses
+        guessLeft = 9;
+        previousGuess = [];
         }
       }
 
@@ -65,12 +71,10 @@
         var html =
           "<h1>The Psychic Game</h1>" +
           "<p>Guess what letter I’m thinking of<p>" +
-          "<p>You chose: " + userGuess + "</p>" +
-          "<p>The computer chose: " + computerGuess + "</p>" +
           "<p>wins: " + wins + "</p>" +
           "<p>losses: " + losses + "</p>" +
-          "<p>Guesses Left: " + guessLeft + "</p>"
-          // "<p>Your Guesses so far: " + previousGuess.join(", ") "</p>";
+          "<p>Guesses Left: " + guessLeft + "</p>" +
+          "<p>Your Guesses so far: " + previousGuess.join(", ") + "</p>" 
 
 
         // Set the inner HTML contents of the #game div to our html string. Updating the page itself
