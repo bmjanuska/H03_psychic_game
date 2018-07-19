@@ -25,14 +25,6 @@ document.onkeyup = function(event) {
   //Previous guess is uploaded 
   previousGuess.push(userGuess);
 
-  // //Attempt to cancel out repeat keystrokes
-  // var repeat = event.repeat;
-  // var KeyboardEvent.repeat(false)
-
-
-  // Randomly chooses a choice from the options array. This is the Computer's guess.
-  var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
-
   if (userGuess === "a" ||
     userGuess === "b" ||
     userGuess === "c" ||
@@ -61,8 +53,7 @@ document.onkeyup = function(event) {
     if (userGuess === computerGuess) {
       //If the user matches computer then they gain point
       wins++;
-      previousGuess = [];
-      guessLeft = 9;
+      gameReset();
 
     }
     if (userGuess !== computerGuess) {
@@ -74,13 +65,27 @@ document.onkeyup = function(event) {
       //Add a point to losses if you run out of points before guessing the right letter
       losses++;
       //Guesses will return to 9 when you run out of guesses
-      guessLeft = 9;
-      previousGuess = [];
+      // guessLeft = 9;
+      // previousGuess = [];
+      gameReset();
     }
 
 
   }
 
+  //Create a function that will change the letter, reset guesses, and reset previous guesses
+  function gameReset(){ 
+  // Randomly chooses a choice from the options array. This is the Computer's guess.
+  var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+  console.log(computerGuess);
+      guessLeft = 9;
+      previousGuess = [];
+
+  }
+
+    // Randomly chooses a choice from the options array. This is the Computer's guess.
+  var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+  console.log(computerGuess);
 
   // Creating a variable to hold our new HTML. Our HTML now keeps track of the user and computer guesses, and wins/losses/ties.
   var html =
