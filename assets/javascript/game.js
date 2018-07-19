@@ -8,23 +8,26 @@ var previousGuess = [];
 var computerGuess ; 
 
 
-// Creating variables to hold the number of wins, losses, and ties. They start at 0.
+//Variable for wins that starts at 0
 var wins = 0;
+//Variable for losses that starts at 0
 var losses = 0;
+//Varriable for guesses that starts at 9 for how many guesses the user has
 var guessLeft = 9;
-//the solve. you had the
+//Varriable for the computer to pick a letter
 var computerGuess = "";
 
-  //Create a function that will change the letter, reset guesses, and reset previous guesses
+//Function that will pick a new letter
 function newLetter(){ 
   // Randomly chooses a choice from the options array. This is the Computer's guess.
   computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
   console.log("computer pick: " + computerGuess);
 }
 
+//New letter being made
 newLetter();
 
-  //Function to reset the score and previous guesses
+//Function to reset the score and previous guesses
 function guessReset (){
     guessLeft = 9;
     previousGuess = [];
@@ -40,7 +43,7 @@ var userGuess = event.key;
   console.log("your pick: " + userGuess);
 
 
-//Disables the same key from being clicked twice!!!!!
+//Disables the same key from being clicked twice
 if(previousGuess.includes(userGuess)) {
 return;
 }
